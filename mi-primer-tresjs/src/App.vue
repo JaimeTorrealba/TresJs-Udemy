@@ -1,8 +1,9 @@
 <script setup>
+import TheExperience from './components/TheExperience.vue';
 </script>
 
 <template>
-<h1>Hola mundo</h1>
+<TheExperience />
 </template>
 
 <style scoped>
