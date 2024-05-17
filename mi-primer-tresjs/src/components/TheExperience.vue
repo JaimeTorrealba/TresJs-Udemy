@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { TresCanvas, vLog  } from '@tresjs/core'
+import { TresCanvas  } from '@tresjs/core'
 </script>
 
 <template>
   <TresCanvas window-size>
-    <TresPerspectiveCamera v-log />
-    <TresMesh v-log >
-        <TresTorusGeometry :args="[1, 0.5, 16, 32]" />
-        <TresMeshBasicMaterial color="orange" />
+    <TresPerspectiveCamera :position="[0, 3, 5]" :look-at="[0,0,0]"  />
+    <TresMesh >
+        <TresBoxGeometry :args="[1,1,1]" />
+        <TresMeshBasicMaterial color="green" />
       </TresMesh>
   </TresCanvas>
 </template>
