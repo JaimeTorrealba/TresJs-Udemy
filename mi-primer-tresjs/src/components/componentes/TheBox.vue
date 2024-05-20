@@ -1,10 +1,22 @@
 <script setup>
-import { useTresContext } from '@tresjs/core'
+import { shallowRef } from 'vue'
+import { useTresContext, useLoop } from '@tresjs/core'
+import { Stats } from '@tresjs/cientos'
 
-const ctx = useTresContext()
-console.log('jaime ~ ctx:', ctx);
+const boxRef = shallowRef()
+
+const {onBeforeRender } = useLoop()
+
+onBeforeRender(({delta}) => {
+  console.log('onBeforeRender')
+
+  // boxRef.value.rotation.x += 0.01
+   boxRef.value.rotation.y += delta
+}, -1)
+
 </script>
 <template>
+  <Stats />
     <TresMesh ref="boxRef">
         <TresBoxGeometry :args="[1,1,1]" />
         <TresMeshBasicMaterial color="green" />
