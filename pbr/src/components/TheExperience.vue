@@ -1,6 +1,6 @@
 <script setup>
 import { TresCanvas } from '@tresjs/core'
-import { OrbitControls } from '@tresjs/cientos'
+import { OrbitControls, Stars } from '@tresjs/cientos'
 import TheEarth from './earth/TheEarth.vue'
 
 </script>
@@ -9,6 +9,7 @@ import TheEarth from './earth/TheEarth.vue'
   <TresCanvas window-size shadows clear-color="#111">
     <TresPerspectiveCamera :position="[0, 3, 5]" :look-at="[0, 0, 0]" />
     <OrbitControls />
+    <Stars />
     <Suspense>
       <TheEarth />
     </Suspense>
