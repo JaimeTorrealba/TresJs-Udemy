@@ -1,25 +1,25 @@
 <script setup>
 import { shallowRef } from 'vue';
-import { useLoop } from '@tresjs/core'
+import { useLoop, useTexture } from '@tresjs/core'
 
 const sphereRef = shallowRef(null)
 
+const { map } = await useTexture({
+    map: '/textures/8k_earth_daymap.jpg',
+})
+
+console.log('jaime ~ map:', map);
 const { onBeforeRender } = useLoop()
 
 onBeforeRender(({elapsed}) => {
-    sphereRef.value.position.z = Math.sin(elapsed)
+    sphereRef.value.rotation.y = elapsed *0.5
 })
 
 </script>
 
 <template>
-    <TresMesh ref="sphereRef" cast-shadow >
+    <TresMesh ref="sphereRef" >
         <TresSphereGeometry :args="[1, 16]" />
-        <TresMeshStandardMaterial />
+        <TresMeshStandardMaterial :map="map" />
     </TresMesh>
-    <TresMesh receive-shadow :rotation-x="-Math.PI * 0.5" :position-y="-2" >
-        <TresPlaneGeometry :args="[10, 10]" />
-        <TresMeshStandardMaterial color="#f7f7f7" />
-    </TresMesh>
-    
 </template>
