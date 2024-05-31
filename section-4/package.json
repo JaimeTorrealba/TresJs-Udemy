@@ -15,10 +15,12 @@
     "@tresjs/core": "^3.9.0",
     "@vueuse/core": "^10.10.0",
     "three": "^0.164.1",
+    "tweakpane": "^4.0.3",
     "vue": "^3.4.21"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
+    "@tweakpane/core": "^2.0.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.57.0",
