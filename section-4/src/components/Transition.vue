@@ -3,22 +3,8 @@ import { ref } from 'vue'
 import { TresCanvas } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { gsap } from 'gsap'
-import Box from './componentsClass/TheBox.vue'
-import Sphere from './componentsClass/TheSphere.vue'
-import Cone from './componentsClass/TheCone.vue'
 
-
-const components = {
-    Box,
-    Sphere,
-    Cone
-}
-
-const current = ref('Sphere')
-
-const handleComponent = (component) => {
-    current.value = component
-}
+const showBox = ref(false)
 
 const onEnter = (el, done) => {
     gsap.from(el.material, { duration: 1, opacity: 0, onComplete: done })
@@ -31,16 +17,15 @@ const onLeave = (el, done) => {
 </script>
 
 <template>
-    <div class="show-box">
-        <button @click="handleComponent('Box')">Toggle Box</button>
-        <button @click="handleComponent('Sphere')">Toggle Sphere</button>
-        <button @click="handleComponent('Cone')">Toggle Cone</button>
-    </div>
+    <button class="show-box" @click="showBox = !showBox">Toggle Box</button>
     <TresCanvas clear-color="#333" window-size>
         <TresPerspectiveCamera :position="[0, 10, 10]" :look-at="[0, 0, 0]" />
-        <!-- <Transition @enter="onEnter" @leave="onLeave" :css="false"> -->
-        <component :is="components[current]" />
-        <!-- </Transition> -->
+        <Transition @enter="onEnter" @leave="onLeave" :css="false">
+            <TresMesh v-if="showBox">
+                <TresBoxGeometry :args="[1, 1, 1]" />
+                <TresMeshNormalMaterial transparent />
+            </TresMesh>
+        </Transition>
         <OrbitControls />
     </TresCanvas>
 </template>
@@ -48,7 +33,7 @@ const onLeave = (el, done) => {
 .show-box {
     position: absolute;
     top: 0;
-    left: 40%;
+    left: 50%;
     z-index: 100;
     padding: 10px;
     background: #333;
