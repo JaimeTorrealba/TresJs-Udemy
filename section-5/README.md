@@ -1,4 +1,8 @@
-# section-5
+# Section-5
+
+Credit for the 3D model in this section:
+
+"Scifi Drone 1.1" (https://skfb.ly/6AnFY) by Javier Martín Hidalgo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 This template should help get you started developing with Vue 3 in Vite.
 
